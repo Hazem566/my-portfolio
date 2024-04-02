@@ -1,0 +1,112 @@
+
+:root{
+    --text-color-1: #dbdbdb;
+    --text-color-2: #989898;
+    --text-size-1: clamp(1.2rem, 1.2rem + 4dvw, 3rem);
+    --text-size-3: clamp(1rem, 0.7rem + 2dvw, 1.4rem);
+    --poppins: "Poppins", sans-serif;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    min-height: 100dvh;
+    background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./assets/background.jpg")center/cover;
+    backdrop-filter: blur(3px);
+    position: relative;
+}
+/* NAVBAR */
+header {
+    background-color: rgb(255,255,255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgb(198, 198, 198);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+nav {
+    width: 90%;
+    margin: 0 auto;
+}
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0;
+}
+.logo {
+    font-size: var(--text-size-1);
+    color: var(--text-color-1);
+    text-transform: uppercase;
+}
+.char {color:var(--text-color-2);}
+.blink {visibility: hidden;}
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 1.4rem;
+    width: 2rem;
+    align-items: flex-end;
+    cursor: pointer;
+    margin-left: auto;
+}
+.icon span {
+    background-color: var(--text-color-1);
+    width: 100%;
+    height: 3px;
+    border-radius: 0.2rem;
+    transition: 300ms ease-in-out;
+}
+.icon.nic span:nth-child(2) {transform: translateX(2px);}
+.icon.nic span:first-child {transform: translateX(-4px);}
+.icon.nic span:last-child {transform: translateX(-4px);}
+
+
+.links {
+    height: 0;
+    overflow: hidden;
+    transition: height 300ms ease;
+}
+.links ul {
+    padding: 0.7rem 0;
+    list-style: none;
+    display: grid;
+    grid-template-rows: repeat(4, 2.3rem);
+    row-gap: 0.4rem;
+}
+.links a{
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    height: 100%;
+    width: 95%;
+    font-size: var(--text-size-3);
+    font-family: var(--poppins);
+    color: var(--text-color-1);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 1rem;
+    letter-spacing: 0.3rem;
+    box-shadow: 2px 2px 1px #011222;
+}
+.links a:hover {
+    position: relative;
+    top: 2px;
+    left: 2px;
+    box-shadow: none;
+}
+.active::after {
+    content: "";
+    height: 0.8rem;
+    width: 0.8rem;
+    background: var(--text-color-1);
+    border-radius: 50%;
+    margin-left: auto;
+    /* box-shadow: 0 0 20px #011222; */
+}

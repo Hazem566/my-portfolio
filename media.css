@@ -1,0 +1,11 @@
+
+@media only screen and (min-width: 619px) {
+    .icon {
+        height: 1.7rem;
+        width: 2.3rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* breakdown the navbar */
+}
