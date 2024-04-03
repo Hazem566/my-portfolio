@@ -1,11 +1,72 @@
 
-@media only screen and (min-width: 619px) {
-    .icon {
-        height: 1.7rem;
-        width: 2.3rem;
+
+/* MIN */
+@media only screen and (min-width: 576px) {
+    .img__border {
+        height: 16rem;
+        width: 16rem;
+        transform: translateY(-20px);
+    }
+}
+@media only screen and (min-width: 768px) {
+
+}
+@media only screen and (min-width: 992px) {
+    .section__center {
+        flex-direction: row-reverse;
+        justify-content: space-evenly;
+    }
+    .img__border {
+        height: 24rem;
+        width: 24rem;
+    }
+    .btns__container a{
+        font-size: 1.2rem;
+        width: 12rem;
     }
 }
 
-@media only screen and (min-width: 768px) {
-    /* breakdown the navbar */
+
+/* Max */
+@media only screen and (max-width: 768px) {
+    .icon {
+        height: 1.3rem;
+        width: 2rem;
+    }
+    .icon span {
+        height: 0.19rem;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .icon {
+        display: flex;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    nav {
+        flex-direction: column;
+        position: relative;
+    }
+    .menu {
+        width: max(90%, 200px);
+        height: 0;
+        overflow: hidden;
+        transition: 350ms linear;
+    }
+    .links {
+        padding: 0.6rem 0.7rem 0.4rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        width: 100%;
+    }
+    .nav__item:hover {
+        transform: translate(1.5px, 1.5px);
+    }
+    .icon.nic span:first-child {transform: translateX(-4px);}
+    .icon.nic span:last-child {transform: translateX(-4px);}
+    .icon.nic span:nth-child(2) {transform: translateX(2px);}
 }

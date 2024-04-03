@@ -1,11 +1,15 @@
 // icon => nic
+// link => active__item
 /* ----------- target elements ----------- */
 const dot = document.querySelector(".dot");
 
-const navBtn = document.querySelector(".icon");
-const links = document.querySelector(".links ul");
-const navContainer = document.querySelector(".links");
-const navLinks = document.querySelectorAll(".nav__link");
+const linksContainer = document.querySelector(".menu");
+const links = document.querySelector(".links");
+const navLinks = document.querySelectorAll(".nav__item");
+const menuBtn = document.querySelector(".icon");
+
+const sections = document.querySelectorAll("section");
+
 
 /* -------------- event listeners -------------- */
 window.addEventListener("DOMContentLoaded", () => {
@@ -13,32 +17,55 @@ window.addEventListener("DOMContentLoaded", () => {
         blink(dot);
     }, 1000);
 });
-navBtn.addEventListener("click", toggleNav);
-navLinks.forEach(link=>link.addEventListener("click", navBetweenSections));
+window.addEventListener("resize", () => {
+    setHeight();
+    if(window.innerWidth > 992) {
+        linksContainer.style.height = "min-content";
+        menuBtn.classList.remove("nic");
+    } else {
+        linksContainer.style.height = "0";
+        menuBtn.classList.remove("nic");
+    }
+});
+menuBtn.addEventListener("click", toggleNav);
+navLinks.forEach(link=>link.addEventListener("click", navigateBetweenSections));
 /* -------------- functions -------------- */
-function blink(element) {
-    if(element.classList.contains("blink")) {
-        element.classList.remove("blink");
-    } else {
-        element.classList.add("blink");
-    }
-}
 
+function blink(ele) {
+    if(ele.classList.contains("blink")) ele.classList.remove("blink");
+    else ele.classList.add("blink");
+}
 function toggleNav() {
-    let navHeight = links.offsetHeight;
-    let containerHeight = navContainer.offsetHeight;
-    if(containerHeight === 0) {
-        navContainer.style.height = `${navHeight}px`;
-        navBtn.classList.add("nic");
-    } else {
-        navContainer.style.height = `0`;
-        navBtn.classList.remove("nic");
+    if(window.innerWidth <= 992) {
+        let containerHeight = linksContainer.offsetHeight;
+        let linksHeight = links.offsetHeight;
+        if(containerHeight === 0) {
+            linksContainer.style.height = `${linksHeight}px`;
+            menuBtn.classList.add("nic");
+        } else {
+            linksContainer.style.height = "0";
+            menuBtn.classList.remove("nic");
+        }
     }
 }
+function navigateBetweenSections(e) {
+    let currentLink = e.currentTarget;
+    if(window.innerWidth <= 992) {
+        menuBtn.classList.remove("nic");
+        linksContainer.style.height = "0";
+        navLinks.forEach(link=>link.classList.remove("active__item"));
+        currentLink.classList.add("active__item");
+    } else {
+        navLinks.forEach(link=>link.classList.remove("active__item"));
+        currentLink.classList.add("active__item");
 
-function navBetweenSections(e) {
-    navBtn.classList.remove("nic");
-    navContainer.style.height = "0";
-    navLinks.forEach(link => link.classList.remove("active"));
-    e.currentTarget.classList.add("active");
+    }
+
 }
+function setHeight() {
+    let headerHeight = document.getElementById("header").offsetHeight;
+    sections.forEach(sec => {
+        sec.style.height = `calc(100dvh - ${headerHeight}px)`;
+    });
+}
+setHeight();
