@@ -19,6 +19,9 @@ html {
 body {
     min-height: 100dvh;
     background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./assets/background.jpg")center/cover fixed;
+    -webkit-backdrop-filter: blur(3px);
+    -moz-backdrop-filter: blur(3px);
+    -o-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
     position: relative;
 }
@@ -30,6 +33,9 @@ section {
     display: grid;
     place-items: center;
     border-bottom: 2px solid var(--text-color-1);
+    -webkit-backdrop-filter: blur(12px);
+    -moz-backdrop-filter: blur(12px);
+    -o-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
@@ -188,3 +194,18 @@ nav {
 .btns__container a:hover {
     letter-spacing: 0.13rem;
 }
+
+/* about section */
+section:not(#home) {
+    display: grid;
+    place-items: center;
+    font-size: var(--text-size-1);
+    color: var(--text-color-1);
+    font-family: var(--poppins);
+    border: 1px solid;
+}
+
+
+
+
+

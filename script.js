@@ -3,6 +3,7 @@
 /* ----------- target elements ----------- */
 const dot = document.querySelector(".dot");
 
+const header = document.getElementById("header");
 const linksContainer = document.querySelector(".menu");
 const links = document.querySelector(".links");
 const navLinks = document.querySelectorAll(".nav__item");
@@ -60,10 +61,22 @@ function navigateBetweenSections(e) {
         currentLink.classList.add("active__item");
 
     }
-
+    let secName = currentLink.dataset.id;
+    if(secName === "home") {
+        window.scrollTo({
+            top: 0
+        });
+    } else {
+        let secTop = document.getElementById(secName).offsetTop;
+        let headerHeight = header.offsetHeight;
+        let position = secTop - headerHeight;
+        window.scrollTo({
+            top: position
+        });
+    }
 }
 function setHeight() {
-    let headerHeight = document.getElementById("header").offsetHeight;
+    let headerHeight = header.offsetHeight;
     sections.forEach(sec => {
         sec.style.height = `calc(100dvh - ${headerHeight}px)`;
     });
