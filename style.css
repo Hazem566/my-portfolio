@@ -177,6 +177,7 @@ nav {
 .profession {
     letter-spacing: 0.1rem;
     font-size: var(--text-size-3);
+    height: 2.1rem;
 }
 .btns__container {
     display: flex;

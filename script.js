@@ -1,7 +1,6 @@
-// icon => nic
-// link => active__item
+
 /* ----------- target elements ----------- */
-const header = document.getElementById("header");
+const subTitles = ["junior front-end", "ready to build projects", "ready for internship"];
 const linksContainer = document.querySelector(".menu");
 const links = document.querySelector(".links");
 const navLinks = document.querySelectorAll(".nav__item");
@@ -9,7 +8,7 @@ const menuBtn = document.querySelector(".icon");
 const sections = document.querySelectorAll("section");
 const img = document.querySelector(".img__border");
 const bannerText = document.querySelector(".text__container");
-const curser = document.querySelector(".curser");
+const professionEle = document.querySelector(".profession");
 /* -------------- event listeners -------------- */
 window.addEventListener("DOMContentLoaded", reloadPage);
 window.addEventListener("resize", resizePage);
@@ -21,7 +20,7 @@ observeItems(bannerText, "slideTop-2", "add");
 // window event functions
 function reloadPage() {
     setHeight();
-    blink(curser);
+    setTimeout(() => setSubTitles(subTitles, professionEle), 1500);
 }
 function resizePage() {
     setHeight();
@@ -110,4 +109,22 @@ function observeItems(item, className, classState) {
     return itemObserve.observe(item);
 }
 
-
+function sleep(ms) {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
+async function setSubTitles(array, ele, i = 0) {
+    let word = array[i];
+    for(let i=0;i<=word.length;i++) {
+        ele.textContent = word.slice(0, i);
+        await sleep(100);
+    }
+    await sleep(1000);
+    for(let i=word.length;i>=0;i--){
+        ele.textContent = word.slice(0, i);
+        await sleep(100);
+    }
+    if(i === array.length - 1) i = -1;
+    return setSubTitles(array, ele, i+1);
+}
