@@ -2,7 +2,7 @@
 
 /* MIN */
 @media only screen and (min-width: 576px) {
-    .img__border {
+    .img__container {
         height: 16rem;
         width: 16rem;
     }
@@ -16,7 +16,7 @@
         justify-content: space-evenly;
         padding: 0 2rem;
     }
-    .img__border {
+    .img__container {
         height: 28rem;
         width: 28rem;
     }
