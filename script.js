@@ -1,6 +1,6 @@
 
 /* ----------- target elements ----------- */
-const subTitles = ["junior front-end", "ready to build projects", "ready for internship"];
+const subTitles = ["junior front-end", "ready to build projects", "ready for internships"];
 const linksContainer = document.querySelector(".menu");
 const links = document.querySelector(".links");
 const navLinks = document.querySelectorAll(".nav__item");
@@ -18,7 +18,7 @@ navLinks.forEach(link=>link.addEventListener("click", navigateBetweenSections));
 // window event functions
 function reloadPage() {
     setHeight();
-    setTimeout(() => setSubTitles(subTitles, professionEle), 1500);
+    setTimeout(addProfession(professionEle, subTitles), 1000);
 }
 function resizePage() {
     setHeight();
@@ -89,24 +89,30 @@ function setHeight() {
     });
 }
 
-// function sleep(ms) {
-//     return new Promise(resolve => {
-//         setTimeout(resolve, ms);
-//     });
-// }
-// async function setSubTitles(array, ele, i = 0) {
-//     let word = array[i];
-//     for(let i=0;i<=word.length;i++) {
-//         ele.textContent = word.slice(0, i);
-//         await sleep(100);
-//     }
-//     await sleep(1000);
-//     for(let i=word.length;i>=0;i--){
-//         ele.textContent = word.slice(0, i);
-//         await sleep(100);
-//     }
-//     if(i === array.length - 1) i = -1;
-//     return setSubTitles(array, ele, i+1);
-// }
 
+const sleep = ms => {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
 
+async function addProfession(el, ar) {
+    let index=0;
+    while(index<ar.length){ 
+        let word = ar[index];
+        for(let i=0;i<word.length+1;i++) {
+            let str = word.substring(0, i);
+            el.innerText = str;
+            await sleep(150);
+        }
+        await sleep(4000);
+        for(let i=word.length+1;i>=0;i--) {
+            let str = word.substring(i, 0);
+            el.innerText = str;
+            await sleep(150);
+        }
+        await sleep(250);
+        index++;
+        if(index === ar.length) index = 0;
+    }
+}
