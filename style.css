@@ -18,7 +18,7 @@ html {
 }
 body {
     min-height: 100dvh;
-    background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./assets/background.png")center/cover fixed;
+    background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("./assets/background.jpg")center/cover fixed;
     -webkit-backdrop-filter: blur(3px);
     -moz-backdrop-filter: blur(3px);
     -o-backdrop-filter: blur(3px);
@@ -136,6 +136,7 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
 }
 .text__container {
     display: flex;

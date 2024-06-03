@@ -14,8 +14,6 @@ window.addEventListener("DOMContentLoaded", reloadPage);
 window.addEventListener("resize", resizePage);
 menuBtn.addEventListener("click", toggleNav);
 navLinks.forEach(link=>link.addEventListener("click", navigateBetweenSections));
-observeItems(img, "slideTop", "add");
-observeItems(bannerText, "slideTop-2", "add");
 /* -------------- functions -------------- */
 // window event functions
 function reloadPage() {
@@ -91,40 +89,24 @@ function setHeight() {
     });
 }
 
-// set inter sections observers
-function observeItems(item, className, classState) {
-    let itemObserve = new IntersectionObserver(entrtis => {
-        entrtis.forEach(entry => {
-            if(classState === "add") {
-                if(entry.isIntersecting) {
-                     entry.target.classList.add(className);
-                }
-            } else {
-                if(entry.isIntersecting) {
-                    entry.target.classList.toggle(className);
-                }
-            }
-        });
-    });
-    return itemObserve.observe(item);
-}
+// function sleep(ms) {
+//     return new Promise(resolve => {
+//         setTimeout(resolve, ms);
+//     });
+// }
+// async function setSubTitles(array, ele, i = 0) {
+//     let word = array[i];
+//     for(let i=0;i<=word.length;i++) {
+//         ele.textContent = word.slice(0, i);
+//         await sleep(100);
+//     }
+//     await sleep(1000);
+//     for(let i=word.length;i>=0;i--){
+//         ele.textContent = word.slice(0, i);
+//         await sleep(100);
+//     }
+//     if(i === array.length - 1) i = -1;
+//     return setSubTitles(array, ele, i+1);
+// }
 
-function sleep(ms) {
-    return new Promise(resolve => {
-        setTimeout(resolve, ms);
-    });
-}
-async function setSubTitles(array, ele, i = 0) {
-    let word = array[i];
-    for(let i=0;i<=word.length;i++) {
-        ele.textContent = word.slice(0, i);
-        await sleep(100);
-    }
-    await sleep(1000);
-    for(let i=word.length;i>=0;i--){
-        ele.textContent = word.slice(0, i);
-        await sleep(100);
-    }
-    if(i === array.length - 1) i = -1;
-    return setSubTitles(array, ele, i+1);
-}
+
